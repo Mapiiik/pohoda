@@ -70,6 +70,13 @@ class Pohoda
     /** @var bool */
     public static $sanitizeEncoding = false;
 
+    /**
+     * A set of transformers that will be used when serializing data.
+     *
+     * @var \Riesenia\Pohoda\ValueTransformer\ValueTransformer[]
+     */
+    public static $transformers = [];
+
     /** @var string */
     protected $_ico;
 

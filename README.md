@@ -152,3 +152,26 @@ $pohoda->addItem($code, $stock);
 
 $pohoda->close();
 ```
+
+## Použitie *ValueTransformer* pre úpravu hodnôt
+
+Pomocou rozhrania *ValueTransformer* môžeme implementovať transformátor, ktorý zmení všetky údaje. Príklad pre úpravu všetkých hodnôt na veľké písmena:
+
+```php
+use Riesenia\Pohoda;
+
+class Capitalizer implements \Riesenia\Pohoda\ValueTransformer\ValueTransformer
+{
+    public function transform(string $value): string
+    {
+        return \strtoupper($value);
+    }
+}
+
+// Register the capitalizer to be used to capitalize values
+Pohoda::$transformers[] = new Capitalizer();
+
+$pohoda = new Pohoda('ICO');
+
+...
+```
